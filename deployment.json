@@ -2,7 +2,7 @@
   "namespace": "gagandeepreehal",
   "endpoint_name": "face-plate-blurring",
   "url": "https://6acfc57b9405b8c0d0c71c96.endpoints.huggingface.cloud",
-  "repository": "gagandeepreehal/face-plate-blurring",
+  "repository": "gagandeepreehal/privacy-blur-for-driving-footage",
   "deployed_revision": "39b4d2bc85c79eff871e343c3cfc4574c5150b80",
   "vendor": "aws",
   "region": "us-east-1",

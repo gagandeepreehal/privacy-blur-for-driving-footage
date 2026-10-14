@@ -6,7 +6,7 @@ tags:
 pipeline_tag: object-detection
 ---
 
-# Face and license-plate blurring Endpoint
+# Privacy Blur for Driving Footage
 
 Custom Hugging Face Inference Endpoint handler using the recovered Dashcam Anonymizer YOLOv8 checkpoint and OpenCV YuNet. Accepts a base64 image in `inputs`; returns bounding boxes, confidence scores, and a base64 PNG in `blurred_image`. No OCR or identity recognition. Input and output images are not written to disk by the handler.
 
@@ -30,6 +30,6 @@ Predictions are model-generated pseudo-labels. Missed detections remain possible
 
 Endpoint: https://6acfc57b9405b8c0d0c71c96.endpoints.huggingface.cloud
 
-Private model repository: https://huggingface.co/gagandeepreehal/face-plate-blurring
+Private model repository: https://huggingface.co/gagandeepreehal/privacy-blur-for-driving-footage
 
 Use `python client.py image.jpg --output blurred.png` after local HF login. Cold starts after scale-to-zero can require a retry. Local model loading, blank-image handling, invalid base64 rejection, and live face detection with a blurred PNG response passed. Plate accuracy has not been benchmarked. Deployment details are recorded in `deployment.json`.
