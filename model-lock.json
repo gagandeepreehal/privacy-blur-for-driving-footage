@@ -1,0 +1,11 @@
+{
+  "repository": "varungupta31/dashcam_anonymizer",
+  "revision": "113af405faaf6156c90091479d7309714fda90ef",
+  "checkpoint_sha256": "c941613a63a2e54f1b4f4f1bc7dba3d2b42f905daf4513b3aeaed25b02a72236",
+  "classes": [
+    "face",
+    "license_plate"
+  ],
+  "license_id": "MIT",
+  "note": "Recovered upstream download; original production checkpoint digest unavailable."
+}
