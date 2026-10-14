@@ -1,4 +1,4 @@
-"""Image-only custom Hugging Face Inference Endpoint handler."""
+"""Image and video custom Hugging Face Inference Endpoint handler."""
 import base64
 import io
 import json
@@ -26,12 +26,19 @@ class EndpointHandler:
     def __call__(self, data):
         encoded = data.get('inputs')
         if not isinstance(encoded, str) or len(encoded) > 28_000_000:
-            raise ValueError('inputs must be a base64 image of at most 20 MB')
-        if encoded.startswith('data:image/'):
+            raise ValueError('inputs must be a base64 media of at most 20 MB')
+        if encoded.startswith(('data:image/', 'data:video/')):
             encoded = encoded.split(',', 1)[1]
         raw = base64.b64decode(encoded, validate=True)
         if len(raw) > 20_000_000:
-            raise ValueError('Image exceeds 20 MB')
+            raise ValueError('Media exceeds 20 MB')
+        media_type = data.get('media_type', 'image')
+        if media_type == 'video':
+            from video import process_video
+            with self.lock:
+                return process_video(raw, self.detector, self.config, data.get('max_gap_frames', 12))
+        if media_type != 'image':
+            raise ValueError('media_type must be image or video')
         with Image.open(io.BytesIO(raw)) as image:
             if image.width * image.height > 20_000_000:
                 raise ValueError('Image exceeds 20 megapixels')

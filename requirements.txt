@@ -4,3 +4,4 @@ ultralytics==8.3.0
 numpy==1.26.4
 opencv-python==4.10.0.84
 dill==0.3.8
+av==16.0.1

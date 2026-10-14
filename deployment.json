@@ -3,7 +3,7 @@
   "endpoint_name": "face-plate-blurring",
   "url": "https://6acfc57b9405b8c0d0c71c96.endpoints.huggingface.cloud",
   "repository": "gagandeepreehal/privacy-blur-for-driving-footage",
-  "deployed_revision": "39b4d2bc85c79eff871e343c3cfc4574c5150b80",
+  "deployed_revision": "eb602e5b64d787c469eaab58d1408fba4e7ed244",
   "vendor": "aws",
   "region": "us-east-1",
   "instance_type": "nvidia-t4",
@@ -12,5 +12,10 @@
   "min_replica": 0,
   "scale_to_zero_timeout": 15,
   "authentication": "authenticated",
-  "verification": "Live face detection and blurred PNG response passed; plate accuracy not benchmarked."
+  "verification": "Local face/plate interpolation and VFR tests passed; live video export, face gap interpolation, and output timestamps verified. Plate accuracy not benchmarked.",
+  "video_limits": {
+    "input_bytes": 20000000,
+    "frames": 300,
+    "max_gap_frames": 12
+  }
 }
